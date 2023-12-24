@@ -21,13 +21,13 @@ function detectNewline(
 }
 
 function detectSemicolon(contents: string): boolean | undefined {
-	contents = contents.replace(/\/\/.*$\n/gm, '');
+	contents = contents.replaceAll(/\/\/.*$\n/gm, '');
 	if (contents === '') return;
 
 	const lines = contents.split('\n').filter(Boolean);
 
-	const endsInOther = lines.filter((each) => each.match(/^.+[{},()]\s*$/gm)).length;
-	const endsInSemicolon = lines.filter((each) => each.match(/^.+[;]\s*$/gm)).length;
+	const endsInOther = lines.filter((each) => each.match(/^.+[(),{}]\s*$/gm)).length;
+	const endsInSemicolon = lines.filter((each) => each.match(/^.+;\s*$/gm)).length;
 	const endsInNotSemicolon = lines.length - endsInOther - endsInSemicolon;
 
 	if (endsInSemicolon > endsInNotSemicolon) {
