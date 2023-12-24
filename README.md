@@ -22,7 +22,7 @@ detectIndent(file);
 detectNewline(file);
 // { type: 'lf' | 'crlf', newline: '\n' | '\r\n' }
 detectSemicolon(file);
-// true
+// boolean
 detectQuotes(file);
 // { type: 'single' | 'double', quotes: "'" | '"' }
 ```
