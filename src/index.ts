@@ -1,3 +1,5 @@
+import { countMatchingLines, getLines } from './utils';
+
 // https://github.com/sindresorhus/detect-indent
 
 /**
@@ -161,13 +163,11 @@ function detectNewline(
 }
 
 function detectSemicolon(contents: string): boolean | undefined {
-	contents = contents.replaceAll(/\/\/.*$\n/gm, '');
-	if (contents === '') return;
+	const lines = getLines(contents);
+	if (!lines) return;
 
-	const lines = contents.split('\n').filter(Boolean);
-
-	const endsInOther = lines.filter((each) => each.match(/^.+[(),{}]\s*$/gm)).length;
-	const endsInSemicolon = lines.filter((each) => each.match(/^.+;\s*$/gm)).length;
+	const endsInOther = countMatchingLines(lines, /^.+[(),{}]\s*$/gm);
+	const endsInSemicolon = countMatchingLines(lines, /^.+;\s*$/gm);
 	const endsInNotSemicolon = lines.length - endsInOther - endsInSemicolon;
 
 	if (endsInSemicolon > endsInNotSemicolon) {
@@ -182,8 +182,11 @@ function detectSemicolon(contents: string): boolean | undefined {
 function detectQuotes(
 	contents: string,
 ): { type: 'single' | 'double'; quotes: '"' | "'" } | undefined {
-	const singleQuotes = (contents.match(/(?<!\\)'/gm) || []).length;
-	const doubleQuotes = (contents.match(/(?<!\\)"/gm) || []).length;
+	const lines = getLines(contents);
+	if (!lines) return;
+
+	const singleQuotes = countMatchingLines(lines, /(?<!\\)'/gm);
+	const doubleQuotes = countMatchingLines(lines, /(?<!\\)"/gm);
 
 	if (singleQuotes > doubleQuotes) {
 		return {
