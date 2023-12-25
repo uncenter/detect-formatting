@@ -125,9 +125,7 @@ function detectIndent(
 	// Identify indents while skipping single space indents to avoid common edge cases (e.g. code comments).
 	// If no indents are identified, run again and include all indents for comprehensive detection.
 	let indents = makeIndentsMap(contents, true);
-	if (indents.size === 0) {
-		indents = makeIndentsMap(contents, false);
-	}
+	if (indents.size === 0) indents = makeIndentsMap(contents, false);
 
 	const keyOfMostUsedIndent = getMostUsedKey(indents);
 	if (keyOfMostUsedIndent === undefined) return;
