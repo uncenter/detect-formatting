@@ -1,7 +1,7 @@
 {
 	"name": "detect-formatting",
 	"version": "0.1.0",
-	"description": "",
+	"description": "Detect the indentation, newline style, quotes style, and usage of semicolons of a JavaScript file.",
 	"author": "uncenter <hi@uncenter.dev>",
 	"repository": {
 		"type": "git",

@@ -1,5 +1,7 @@
 # detect-formatting
 
+Detect the indentation, newline style, quotes style, and usage of semicolons of a JavaScript file.
+
 ## Installation
 
 ```sh
