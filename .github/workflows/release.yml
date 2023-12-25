@@ -6,6 +6,8 @@ on:
       - "v*.*.*"
 
 jobs:
+  lint:
+    uses: ./.github/workflows/check.yml
   release:
     runs-on: ubuntu-latest
     permissions:
@@ -26,9 +28,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Test
-        run: pnpm test
 
       - name: Build
         run: pnpm build

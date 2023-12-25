@@ -26,9 +26,8 @@
 	"scripts": {
 		"build": "unbuild",
 		"test": "vitest",
-		"check": "tsc",
+		"types": "tsc",
 		"lint": "eslint .",
-		"lint:fix": "eslint --fix .",
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
