@@ -18,13 +18,13 @@ import { readFileSync } from 'node:fs';
 const file = readFileSync('index.js', 'utf-8');
 
 detectIndent(file);
-// { type: 'space' | 'tab', amount: number, indent: string }
+// { type: 'space' | 'tab', amount: number, indent: string } | undefined
 detectNewline(file);
-// { type: 'lf' | 'crlf', newline: '\n' | '\r\n' }
+// { type: 'lf' | 'crlf', newline: '\n' | '\r\n' } | undefined
 detectSemicolon(file);
-// boolean
+// boolean | undefined
 detectQuotes(file);
-// { type: 'single' | 'double', quotes: "'" | '"' }
+// { type: 'single' | 'double', quotes: "'" | '"' } | undefined
 ```
 
 ## License
