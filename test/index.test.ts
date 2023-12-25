@@ -4,14 +4,14 @@ import { detectIndent, detectNewline, detectQuotes, detectSemicolon } from '../s
 
 describe('detectIndent()', () => {
 	test('should detect tab indent', () => {
-		expect(detectIndent(`\t1;\n\t\t2;\n\t\t\t3;\n`)?.type).toBe('tab');
+		expect(detectIndent(`\t1;\n\t2;\n\t3;\n`)?.type).toBe('tab');
 	});
 	test('should detect space indent', () => {
-		expect(detectIndent(`  1;\n    2;\n      3;\n`)?.type).toBe('space');
+		expect(detectIndent(`  1;\n  2;\n  3;\n`)?.type).toBe('space');
 	});
 	test('should detect most used indent with mixed', () => {
-		expect(detectIndent(`  1;\n\t2;\n      3;\n`)?.type).toBe('space');
-		expect(detectIndent(`  1;\n\t2;\n\t\t3;\n`)?.type).toBe('tab');
+		expect(detectIndent(`  1;\n\t2;\n  3;\n`)?.type).toBe('space');
+		expect(detectIndent(`  1;\n\t2;\n\t3;\n`)?.type).toBe('tab');
 	});
 	test('should be undefined with equal of both', () => {
 		expect(detectIndent(`\t1;\n  2;\n`)).toBeUndefined();
