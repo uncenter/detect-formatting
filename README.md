@@ -30,3 +30,6 @@ detectQuotes(file);
 ## License
 
 [MIT](LICENSE)
+
+> [!NOTE]
+> The `detectIndent()` and `detectNewline()` functions are largely based on Sindre Sorhus' packages, `detect-indent` and `detect-newline`.
