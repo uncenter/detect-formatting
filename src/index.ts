@@ -99,6 +99,9 @@ function decodeIndentsKey(indentsKey: string): { type: 'tab' | 'space'; amount: 
 // Return the key (e.g. 's4') from the indents Map that represents the most common indent,
 // or return undefined if there are no indents.
 function getMostUsedKey(indents: Map<string, number[]>) {
+	const values = [...indents.values()];
+	if (values.length > 1 && new Set(values.map((v) => v.toString())).size === 1) return;
+
 	let result;
 	let maxUsed = 0;
 	let maxWeight = 0;
@@ -123,8 +126,6 @@ function detectIndent(
 	if (indents.size === 0) {
 		indents = makeIndentsMap(contents, false);
 	}
-
-	console.log(indents);
 
 	const keyOfMostUsedIndent = getMostUsedKey(indents);
 	if (keyOfMostUsedIndent === undefined) return;
