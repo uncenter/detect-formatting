@@ -73,9 +73,9 @@ describe('detectQuotes()', () => {
 describe('fixtures', () => {
 	const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
-	const fastDiff = readFileSync(join(__dirname, '../fixtures/fast-diff.js'), 'utf-8');
-	const flatCache = readFileSync(join(__dirname, '../fixtures/flat-cache.js'), 'utf-8');
-	const eleventy = readFileSync(join(__dirname, '../fixtures/eleventy.js'), 'utf-8');
+	const fastDiff = readFileSync(join(__dirname, './fixtures/fast-diff.js'), 'utf-8');
+	const flatCache = readFileSync(join(__dirname, './fixtures/flat-cache.js'), 'utf-8');
+	const eleventy = readFileSync(join(__dirname, './fixtures/eleventy.js'), 'utf-8');
 
 	test('fastDiff', () => {
 		const indent = detectIndent(fastDiff);
